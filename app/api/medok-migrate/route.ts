@@ -90,7 +90,7 @@ type WcProduct = {
   variations?: { id: number; attributes: { name: string; value: string }[] }[]
 }
 
-async function wcSlugToCategoryId(): Promise<Map<string, number>> {
+async function wcSlugToCategoryId(): Promise<Map<number, number>> {
   const res = await fetch(`${WC}/products/categories?per_page=100`)
   const cats = (await res.json()) as WcCat[]
   const bySlug = new Map(cats.map((c) => [c.slug, c.id] as [string, number]))
