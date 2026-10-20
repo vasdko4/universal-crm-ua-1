@@ -72,19 +72,32 @@ export async function saveDatabaseConfig(input: SaveDatabaseInput): Promise<Save
   // If DATABASE_URL is already set, a downed pool must NOT reopen this
   // endpoint: that would let anyone overwrite the production connection
   // string during an outage.
+  // NOTE: the users count runs only when the schema exists — on a totally
+  // fresh database the "user" table is missing and the count subquery itself
+  // throws, which must not be mistaken for "already installed" (the normal
+  // state for Vercel + Neon, where DATABASE_URL comes from env).
   const alreadyConfigured = Boolean(getConnectionString())
+  let dbReachable = false
+  let hasSchema = false
+  let userCount = 0
   try {
-    const guard = await pool.query(
-      `SELECT to_regclass('public."user"') IS NOT NULL AS has_schema,
-              COALESCE((SELECT COUNT(*) FROM "user"), 0)::int AS users`,
+    const schemaCheck = await pool.query(
+      `SELECT to_regclass('public."user"') IS NOT NULL AS has_schema`,
     )
-    if (guard.rows[0]?.has_schema && guard.rows[0]?.users > 0) {
-      return { ok: false, error: t.alreadyInstalled }
+    dbReachable = true
+    hasSchema = Boolean(schemaCheck.rows[0]?.has_schema)
+    if (hasSchema) {
+      const countRes = await pool.query(`SELECT COUNT(*)::int AS c FROM "user"`)
+      userCount = countRes.rows[0]?.c ?? 0
     }
   } catch {
-    if (alreadyConfigured) {
-      return { ok: false, error: t.alreadyInstalled }
-    }
+    dbReachable = false
+  }
+  if (hasSchema && userCount > 0) {
+    return { ok: false, error: t.alreadyInstalled }
+  }
+  if (!dbReachable && alreadyConfigured) {
+    return { ok: false, error: t.alreadyInstalled }
   }
 
   const url =
