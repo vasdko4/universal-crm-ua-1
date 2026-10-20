@@ -1008,6 +1008,7 @@
   --radius: 0.5rem;
 }
 
+/* Med-OK — фирменная медицинская тема (med-ok.kiev.ua) */
 [data-template='medok'] {
   --background: oklch(0.967 0.01 205);
   --foreground: oklch(0.386 0.046 227);
