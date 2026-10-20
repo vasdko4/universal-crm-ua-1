@@ -40,6 +40,7 @@ export type TemplateId =
   | 'music'
   | 'optics'
   | 'fishing'
+  | 'medok'
 
 /**
  * Home page hero layout used by the template.
@@ -823,6 +824,25 @@ export const TEMPLATES: TemplatePreset[] = [
       accent: 'oklch(0.6 0.12 230)',
     },
     radius: '0.5rem',
+    layout: 'standard',
+    niche: true,
+    premium: true,
+  },
+  {
+    id: 'medok',
+    name: 'Med-OK',
+    nameRu: 'Med-OK',
+    description:
+      'Мʼяка медична тема: світлий фон з фірмовим бірюзовим кольором Med-OK. Один в один як на med-ok.kiev.ua — для медичного одягу, взуття та спорядження.',
+    descriptionRu:
+      'Мягкая медицинская тема: светлый фон с фирменным бирюзовым цветом Med-OK. Один в один как на med-ok.kiev.ua — для медицинской одежды, обуви и снаряжения.',
+    swatches: {
+      bg: 'oklch(0.967 0.01 205)',
+      card: 'oklch(1 0 0)',
+      primary: 'oklch(0.554 0.084 214)',
+      accent: 'oklch(0.895 0.019 213)',
+    },
+    radius: '0.625rem',
     layout: 'standard',
     niche: true,
     premium: true,
