@@ -48,8 +48,10 @@ export type TemplateId =
  *  - marketplace: compact promo banner + dense category tiles (Prom-style)
  *  - boutique: full-width editorial hero with overlaid text
  *  - minimal: typographic hero without a photo, oversized heading
+ *  - medok: Med-OK storefront — pastel gradient hero with photo, three
+ *    benefit cards and a category-tile section (med-ok.kiev.ua look)
  */
-export type TemplateLayout = 'standard' | 'marketplace' | 'boutique' | 'minimal'
+export type TemplateLayout = 'standard' | 'marketplace' | 'boutique' | 'minimal' | 'medok'
 
 export type TemplatePreset = {
   id: TemplateId
@@ -843,7 +845,7 @@ export const TEMPLATES: TemplatePreset[] = [
       accent: 'oklch(0.895 0.019 213)',
     },
     radius: '0.625rem',
-    layout: 'standard',
+    layout: 'medok',
     niche: true,
     premium: true,
   },
