@@ -1008,6 +1008,27 @@
   --radius: 0.5rem;
 }
 
+[data-template='medok'] {
+  --background: oklch(0.967 0.01 205);
+  --foreground: oklch(0.386 0.046 227);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.386 0.046 227);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.386 0.046 227);
+  --primary: oklch(0.554 0.084 214);
+  --primary-foreground: oklch(0.99 0.005 210);
+  --secondary: oklch(0.925 0.014 213);
+  --secondary-foreground: oklch(0.398 0.066 227);
+  --muted: oklch(0.94 0.012 210);
+  --muted-foreground: oklch(0.55 0.03 215);
+  --accent: oklch(0.895 0.019 213);
+  --accent-foreground: oklch(0.398 0.066 227);
+  --border: oklch(0.895 0.019 213);
+  --input: oklch(0.895 0.019 213);
+  --ring: oklch(0.554 0.084 214);
+  --radius: 0.625rem;
+}
+
 /* ============================================================
    Admin panel themes — applied on the admin layout wrapper
    via [data-admin-theme="..."]. "teal" is the default.
