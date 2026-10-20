@@ -8,7 +8,7 @@ const NICHE_IDS = [
   'pharmacy', 'sport', 'toys', 'autochem', 'tea', 'books',
   'plumbing', 'home', 'furniture', 'tools', 'pets', 'flowers',
   'jewelry', 'gifts', 'garden', 'gaming', 'stationery', 'hobby',
-  'appliances', 'moto', 'bikes', 'music', 'optics', 'fishing',
+  'appliances', 'moto', 'bikes', 'music', 'optics', 'fishing', 'medok',
 ]
 
 describe('storefront templates', () => {
